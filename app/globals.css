@@ -1,0 +1,115 @@
+@import "tailwindcss";
+
+/*
+ * Paleta institucional inspirada no brasão do Capítulo 768 São Francisco
+ * do Sul: azul profundo + dourado para a "moldura" do site (navbar, hero,
+ * footer) e um tom pergaminho para o conteúdo (biografia, cards), lembrando
+ * certificados e selos tradicionais. Troque os valores aqui para ajustar
+ * a identidade visual em todo o site de uma vez.
+ */
+:root {
+  --background: #ffffff;
+  --foreground: #12202e;
+
+  --color-demolay-blue-950: #010d1c;
+  --color-demolay-blue-900: #041f3d;
+  --color-demolay-blue-800: #073257;
+  --color-demolay-blue-700: #0b4c82;
+  --color-demolay-blue-600: #1268ab;
+  --color-demolay-blue-500: #1f83d1;
+
+  --color-demolay-gold-300: #f2debb;
+  --color-demolay-gold-400: #e4b96a;
+  --color-demolay-gold-500: #cf9a34;
+  --color-demolay-gold-600: #a97a20;
+
+  --color-demolay-parchment: #faf6ec;
+  --color-demolay-parchment-dark: #f0e8d6;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-sans);
+  --font-display: var(--font-display);
+
+  --color-demolay-blue-950: var(--color-demolay-blue-950);
+  --color-demolay-blue-900: var(--color-demolay-blue-900);
+  --color-demolay-blue-800: var(--color-demolay-blue-800);
+  --color-demolay-blue-700: var(--color-demolay-blue-700);
+  --color-demolay-blue-600: var(--color-demolay-blue-600);
+  --color-demolay-blue-500: var(--color-demolay-blue-500);
+
+  --color-demolay-gold-300: var(--color-demolay-gold-300);
+  --color-demolay-gold-400: var(--color-demolay-gold-400);
+  --color-demolay-gold-500: var(--color-demolay-gold-500);
+  --color-demolay-gold-600: var(--color-demolay-gold-600);
+
+  --color-demolay-parchment: var(--color-demolay-parchment);
+  --color-demolay-parchment-dark: var(--color-demolay-parchment-dark);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+}
+
+/* Esconde a barra de scroll da Linha do Tempo mantendo o arraste funcional */
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Textura sutil de grão, usada sobre fundos escuros (hero, navbar, footer) */
+.bg-grain {
+  background-image: radial-gradient(
+      rgba(255, 255, 255, 0.045) 1px,
+      transparent 1px
+    );
+  background-size: 3px 3px;
+}
+
+/*
+ * Separador ornamental: linha — conteúdo — linha, usado sob rótulos de
+ * seção. Envolva um único elemento (o rótulo ou um losango decorativo)
+ * em `.divider-ornament`; as linhas são geradas via ::before/::after e
+ * herdam a cor do texto (currentColor), então defina `text-{cor}` no
+ * elemento com essa classe.
+ */
+.divider-ornament {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.divider-ornament::before,
+.divider-ornament::after {
+  content: "";
+  height: 1px;
+  flex: 1;
+  background: linear-gradient(90deg, transparent, currentColor, transparent);
+  opacity: 0.6;
+}
+
+/* Entrada suave usada no Hero */
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.fade-in-up {
+  animation: fade-in-up 0.9s ease both;
+}
+@media (prefers-reduced-motion: reduce) {
+  .fade-in-up {
+    animation: none;
+  }
+}
