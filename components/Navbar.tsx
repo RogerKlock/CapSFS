@@ -10,6 +10,7 @@ const links = [
   { href: "/", label: "Home" },
   { href: "/linha-do-tempo", label: "Linha do Tempo" },
   { href: "/filantropias", label: "Filantropias" },
+  { href: "/festilha", label: "Festilha" },
 ];
 
 export default function Navbar() {
@@ -114,7 +115,7 @@ export default function Navbar() {
 
       <div
         className={`overflow-hidden border-b border-demolay-gold-500/15 bg-demolay-blue-950/97 backdrop-blur-md transition-[max-height,opacity] duration-300 ease-in-out md:hidden ${
-          menuOpen ? "max-h-64 opacity-100" : "max-h-0 opacity-0"
+          menuOpen ? "max-h-80 opacity-100" : "max-h-0 opacity-0"
         }`}
       >
         <ul className="flex flex-col gap-1 px-6 py-4">
