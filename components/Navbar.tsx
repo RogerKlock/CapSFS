@@ -7,10 +7,10 @@ import { useEffect, useState } from "react";
 import { capitulo } from "@/data/capitulo";
 
 const links = [
-  { href: "/", label: "Home" },
   { href: "/linha-do-tempo", label: "Linha do Tempo" },
   { href: "/filantropias", label: "Filantropias" },
   { href: "/festilha", label: "Festilha" },
+  { href: "/reconhecimento", label: "Reconhecimento" },
 ];
 
 export default function Navbar() {
@@ -57,7 +57,7 @@ export default function Navbar() {
             </span>
           </Link>
 
-          <ul className="hidden items-center gap-10 md:flex">
+          <ul className="hidden items-center gap-6 xl:flex xl:gap-8">
             {links.map((link) => {
               const active = pathname === link.href;
               return (
@@ -83,7 +83,7 @@ export default function Navbar() {
           <button
             type="button"
             onClick={() => setMenuOpen((open) => !open)}
-            className="flex items-center justify-center rounded-md p-2 text-demolay-parchment md:hidden"
+            className="flex items-center justify-center rounded-md p-2 text-demolay-parchment xl:hidden"
             aria-label="Abrir menu de navegação"
             aria-expanded={menuOpen}
           >
@@ -114,7 +114,7 @@ export default function Navbar() {
       </div>
 
       <div
-        className={`overflow-hidden border-b border-demolay-gold-500/15 bg-demolay-blue-950/97 backdrop-blur-md transition-[max-height,opacity] duration-300 ease-in-out md:hidden ${
+        className={`overflow-hidden border-b border-demolay-gold-500/15 bg-demolay-blue-950/97 backdrop-blur-md transition-[max-height,opacity] duration-300 ease-in-out xl:hidden ${
           menuOpen ? "max-h-80 opacity-100" : "max-h-0 opacity-0"
         }`}
       >

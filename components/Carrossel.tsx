@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
-import { fotosCarrossel } from "@/data/carrossel";
 
 const INTERVALO_MS = 3500;
 
@@ -14,10 +13,22 @@ function offsetCircular(i: number, index: number, total: number) {
   return diff;
 }
 
-export default function Carrossel() {
+export default function Carrossel({
+  imagens,
+  fundo,
+  altTexto = "Foto do capítulo",
+  tamanhoCard = "w-40 sm:w-56 md:w-64",
+}: {
+  imagens: string[];
+  /** Estilo de fundo da seção (ex: o degradê azul → pergaminho usado na Home). Sem isso, fica transparente. */
+  fundo?: React.CSSProperties;
+  altTexto?: string;
+  /** Classes Tailwind de largura do card central (a altura acompanha via aspect-[4/5]). */
+  tamanhoCard?: string;
+}) {
   const [index, setIndex] = useState(0);
   const pausedRef = useRef(false);
-  const total = fotosCarrossel.length;
+  const total = imagens.length;
   // Mostra todas as fotos ao mesmo tempo, em leque, preenchendo a tela
   const vizinhosVisiveis = Math.floor(total / 2);
 
@@ -36,10 +47,7 @@ export default function Carrossel() {
   return (
     <section
       className="relative overflow-x-hidden px-6 pb-16 pt-10 sm:pb-20 sm:pt-14"
-      style={{
-        background:
-          "linear-gradient(to bottom, var(--color-demolay-blue-800) 0%, var(--color-demolay-blue-800) 32%, var(--color-demolay-parchment) 68%, var(--color-demolay-parchment) 100%)",
-      }}
+      style={fundo}
     >
       <div
         className="relative mx-auto w-full max-w-[1400px]"
@@ -62,10 +70,10 @@ export default function Carrossel() {
         </button>
 
         <div
-          className="relative mx-auto aspect-[4/5] w-40 sm:w-56 md:w-64"
+          className={`relative mx-auto aspect-[4/5] ${tamanhoCard}`}
           style={{ perspective: "1200px" }}
         >
-          {fotosCarrossel.map((src, i) => {
+          {imagens.map((src, i) => {
             const offset = offsetCircular(i, index, total);
             if (Math.abs(offset) > vizinhosVisiveis) return null;
             const isActive = offset === 0;
@@ -90,9 +98,9 @@ export default function Carrossel() {
               >
                 <Image
                   src={src}
-                  alt="Momento do capítulo"
+                  alt={altTexto}
                   fill
-                  sizes="(max-width: 640px) 160px, 256px"
+                  sizes="(max-width: 640px) 260px, 380px"
                   className="object-cover"
                   priority={i === 0}
                 />
@@ -122,19 +130,21 @@ export default function Carrossel() {
         </button>
       </div>
 
-      <div className="mt-8 flex items-center justify-center gap-1.5">
-        {fotosCarrossel.map((_, i) => (
-          <button
-            key={i}
-            type="button"
-            onClick={() => goTo(i)}
-            aria-label={`Ver foto ${i + 1}`}
-            className={`h-1.5 rounded-full transition-all ${
-              i === index ? "w-5 bg-demolay-gold-500" : "w-1.5 bg-demolay-blue-900/20"
-            }`}
-          />
-        ))}
-      </div>
+      {total > 1 && (
+        <div className="mt-8 flex items-center justify-center gap-1.5">
+          {imagens.map((_, i) => (
+            <button
+              key={i}
+              type="button"
+              onClick={() => goTo(i)}
+              aria-label={`Ver foto ${i + 1}`}
+              className={`h-1.5 rounded-full transition-all ${
+                i === index ? "w-5 bg-demolay-gold-500" : "w-1.5 bg-demolay-blue-900/20"
+              }`}
+            />
+          ))}
+        </div>
+      )}
     </section>
   );
 }
