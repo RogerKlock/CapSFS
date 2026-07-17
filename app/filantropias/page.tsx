@@ -31,10 +31,10 @@ export default function FilantropiasPage() {
             inteiramente voluntárias e sem retorno financeiro para nossa
             Ordem.
           </p>
-          <p className="italic text-demolay-blue-900/80">
-            Seguimos à risca nosso principal lema: &ldquo;Para ser um
-            DeMolay, é necessário ser útil à sociedade. Mas para ser útil à
-            sociedade, não é necessário ser DeMolay.&rdquo;
+          <p>Seguimos à risca nosso principal lema:</p>
+          <p className="font-display text-lg italic text-demolay-blue-950 sm:text-xl">
+            &ldquo;Para ser um DeMolay, é necessário ser útil à sociedade. Mas
+            para ser útil à sociedade, não é necessário ser DeMolay.&rdquo;
           </p>
           <p>
             Registro das principais ações sociais realizadas pelo capítulo ao

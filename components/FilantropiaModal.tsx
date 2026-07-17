@@ -127,7 +127,7 @@ export default function FilantropiaModal({
                   alt={`${filantropia.titulo} — foto ${i + 1} de ${total}`}
                   fill
                   sizes="(max-width: 640px) 100vw, 50vw"
-                  className="object-cover"
+                  className="object-contain"
                   draggable={false}
                   priority={i === 0}
                 />

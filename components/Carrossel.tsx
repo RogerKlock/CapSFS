@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
+import FotoModal from "./FotoModal";
 
 const INTERVALO_MS = 3500;
 
@@ -27,6 +28,7 @@ export default function Carrossel({
   tamanhoCard?: string;
 }) {
   const [index, setIndex] = useState(0);
+  const [fotoAberta, setFotoAberta] = useState<number | null>(null);
   const pausedRef = useRef(false);
   const total = imagens.length;
   // Mostra todas as fotos ao mesmo tempo, em leque, preenchendo a tela
@@ -35,12 +37,12 @@ export default function Carrossel({
   useEffect(() => {
     if (total < 2) return;
     const id = setInterval(() => {
-      if (!pausedRef.current) {
+      if (!pausedRef.current && fotoAberta === null) {
         setIndex((i) => (i + 1) % total);
       }
     }, INTERVALO_MS);
     return () => clearInterval(id);
-  }, [total]);
+  }, [total, fotoAberta]);
 
   const goTo = (next: number) => setIndex(((next % total) + total) % total);
 
@@ -85,15 +87,14 @@ export default function Carrossel({
               <button
                 key={src}
                 type="button"
-                onClick={() => !isActive && goTo(i)}
-                aria-label={isActive ? undefined : `Ver foto ${i + 1}`}
-                tabIndex={isActive ? -1 : 0}
+                onClick={() => (isActive ? setFotoAberta(i) : goTo(i))}
+                aria-label={isActive ? "Ver foto ampliada" : `Ver foto ${i + 1}`}
                 className="absolute inset-0 overflow-hidden rounded-2xl border-2 border-white shadow-xl transition-[transform,opacity] duration-500 ease-out"
                 style={{
                   transform: `translateX(${offset * 78}%) scale(${scale}) rotateY(${Math.max(-45, Math.min(45, offset * -16))}deg)`,
                   opacity,
                   zIndex: isActive ? 20 : 10 - dist,
-                  cursor: isActive ? "default" : "pointer",
+                  cursor: "pointer",
                 }}
               >
                 <Image
@@ -144,6 +145,14 @@ export default function Carrossel({
             />
           ))}
         </div>
+      )}
+
+      {fotoAberta !== null && (
+        <FotoModal
+          src={imagens[fotoAberta]}
+          alt={altTexto}
+          onClose={() => setFotoAberta(null)}
+        />
       )}
     </section>
   );

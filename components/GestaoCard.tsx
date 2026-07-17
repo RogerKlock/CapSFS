@@ -1,9 +1,19 @@
 import Image from "next/image";
 import type { Gestao } from "@/data/gestoes";
 
-export default function GestaoCard({ gestao }: { gestao: Gestao }) {
+export default function GestaoCard({
+  gestao,
+  onClick,
+}: {
+  gestao: Gestao;
+  onClick: () => void;
+}) {
   return (
-    <article className="group flex h-full w-[280px] flex-col overflow-hidden rounded-2xl border border-demolay-blue-900/10 bg-white shadow-[0_1px_2px_rgba(1,13,28,0.06),0_12px_28px_-12px_rgba(1,13,28,0.25)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_1px_2px_rgba(1,13,28,0.08),0_20px_36px_-14px_rgba(1,13,28,0.32)] sm:w-[320px]">
+    <button
+      type="button"
+      onClick={onClick}
+      className="group flex h-full w-[280px] flex-col overflow-hidden rounded-2xl border border-demolay-blue-900/10 bg-white text-left shadow-[0_1px_2px_rgba(1,13,28,0.06),0_12px_28px_-12px_rgba(1,13,28,0.25)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_1px_2px_rgba(1,13,28,0.08),0_20px_36px_-14px_rgba(1,13,28,0.32)] sm:w-[320px]"
+    >
       <div className="relative h-40 w-full shrink-0 overflow-hidden bg-demolay-blue-900 sm:h-48">
         {gestao.imagem ? (
           <Image
@@ -35,6 +45,6 @@ export default function GestaoCard({ gestao }: { gestao: Gestao }) {
           </p>
         )}
       </div>
-    </article>
+    </button>
   );
 }
