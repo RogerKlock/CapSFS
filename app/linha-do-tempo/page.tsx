@@ -19,9 +19,14 @@ export default function LinhaDoTempoPage() {
         <h1 className="font-display mt-4 text-3xl font-semibold text-demolay-blue-950 sm:text-4xl">
           Linha do Tempo
         </h1>
-        <p className="mt-3 max-w-2xl text-sm text-demolay-blue-900/70 sm:text-base">
-          Arraste para os lados (com o mouse ou o dedo) para navegar pelas
-          gestões do capítulo, em ordem cronológica.
+        <p className="mt-3 max-w-3xl text-sm text-demolay-blue-900/70 sm:text-base">
+          Na Ordem DeMolay, um ano é composto por duas gestões, uma para cada
+          semestre. Para cada gestão nova, é eleito um novo Mestre
+          Conselheiro, que será o líder e o representante do Capítulo durante
+          o mandato subsequente. Assumir o cargo de Mestre Conselheiro e
+          liderar os demais meninos durante a gestão é uma das principais
+          lições de liderança, temperamento, pensamento lógico e
+          desenvolvimento pessoal para o jovem.
         </p>
       </div>
 

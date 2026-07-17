@@ -20,11 +20,28 @@ export default function FilantropiasPage() {
         <h1 className="font-display mt-4 text-3xl font-semibold text-demolay-blue-950 sm:text-4xl">
           Filantropias
         </h1>
-        <p className="mt-3 max-w-2xl text-sm text-demolay-blue-900/70 sm:text-base">
-          Registro das principais ações sociais realizadas pelo capítulo ao
-          longo de sua trajetória. Clique em um card para ver mais fotos e
-          detalhes.
-        </p>
+        <div className="mt-3 max-w-3xl space-y-4 text-sm text-demolay-blue-900/70 sm:text-base">
+          <p>
+            Nosso capítulo realiza inúmeras filantropias em prol da nossa
+            cidade durante o ano inteiro. Diversas instituições e
+            organizações já foram beneficiadas por nossos trabalhos e
+            serviços, juntamente com famílias carentes, pessoas em situação
+            de vulnerabilidade, áreas públicas de nossa cidade, instituições
+            públicas de ensino infantil, entre outras. Nossas causas são
+            inteiramente voluntárias e sem retorno financeiro para nossa
+            Ordem.
+          </p>
+          <p className="italic text-demolay-blue-900/80">
+            Seguimos à risca nosso principal lema: &ldquo;Para ser um
+            DeMolay, é necessário ser útil à sociedade. Mas para ser útil à
+            sociedade, não é necessário ser DeMolay.&rdquo;
+          </p>
+          <p>
+            Registro das principais ações sociais realizadas pelo capítulo ao
+            longo de sua trajetória. Clique em um card para ver mais fotos e
+            detalhes.
+          </p>
+        </div>
 
         <FilantropiasGaleria filantropias={filantropias} />
       </div>
